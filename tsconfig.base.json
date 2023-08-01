@@ -14,9 +14,7 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {
-      "contentlayer/generated": ["./.contentlayer/generated"]
-    }
+    "paths": {}
   },
   "exclude": ["node_modules", "tmp"]
 }

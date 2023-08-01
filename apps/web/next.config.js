@@ -2,7 +2,11 @@
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { composePlugins, withNx } = require('@nx/next');
-const { withContentlayer } = require('next-contentlayer');
+const { createContentlayerPlugin } = require('next-contentlayer');
+
+const withContentlayer = createContentlayerPlugin({
+  configPath: './contentlayer.config.ts',
+});
 
 /**
  * @type {import('@nx/next/plugins/with-nx').WithNxOptions}

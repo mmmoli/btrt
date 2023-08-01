@@ -1,4 +1,4 @@
-import { allPosts } from 'contentlayer/generated';
+import { allPosts } from '../../.contentlayer/generated';
 
 export const findPostForSlug = (slug: string) =>
   allPosts.find((post) => post._raw.flattenedPath === slug);
