@@ -11,6 +11,13 @@
       "options": {
         "outputPath": "dist/apps/web"
       },
+      "dependsOn": [
+        {
+          "projects": ["btrt"],
+          "target": "content",
+          "params": "ignore"
+        }
+      ],
       "configurations": {
         "development": {
           "outputPath": "apps/web"
