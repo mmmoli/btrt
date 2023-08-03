@@ -1,8 +1,10 @@
-import Link from 'next/link';
-import './globals.css';
-import { Inter } from 'next/font/google';
+import { Unbounded } from 'next/font/google';
+import { ReactNode } from 'react';
 
-const inter = Inter({ subsets: ['latin'] });
+import './globals.css';
+import { Navbar } from '../components';
+
+const unbounded = Unbounded({ weight: '600', subsets: ['latin'] });
 
 export const metadata = {
   title: 'Create Next App',
@@ -10,24 +12,16 @@ export const metadata = {
 };
 
 interface RootLayoutProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body className={`antialiased min-h-screen`}>
-        <div className="max-w-2xl mx-auto py-10 px-4">
-          <header>
-            <div className="flex items-center justify-between">
-              <nav className="ml-auto text-sm font-medium space-x-6">
-                <Link href="/">Home</Link>
-                <Link href="/about">About</Link>
-              </nav>
-            </div>
-          </header>
-          <main>{children}</main>
-        </div>
+      <body className={`antialiased min-h-screen ${unbounded.className}`}>
+        <Navbar />
+        <header></header>
+        <main>{children}</main>
       </body>
     </html>
   );

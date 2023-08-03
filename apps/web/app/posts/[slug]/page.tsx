@@ -4,6 +4,7 @@ import { usePostsPage } from './use-posts-page';
 import { Metadata, NextPage } from 'next';
 import { findPostForSlug, generateStaticParams } from '../content';
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
 
 export { generateStaticParams };
 
@@ -18,13 +19,8 @@ export const generateMetadata = ({ params }: AllPostsPageProps): Metadata => {
   return { title: post.title };
 };
 
-const AllPostsPage: NextPage<AllPostsPageProps> = ({
-  params,
-}: {
-  params: { slug: string };
-}) => {
+const AllPostsPage: NextPage<AllPostsPageProps> = ({ params }) => {
   const { post } = usePostsPage(params);
-
   const Content = useMDXComponent(post.body.code);
 
   return (
@@ -34,6 +30,13 @@ const AllPostsPage: NextPage<AllPostsPageProps> = ({
           {format(parseISO(post.date), 'LLLL d, yyyy')}
         </time>
         <h1>{post.title}</h1>
+        <div className="flex space-x-1">
+          {post.tags.map((tag) => (
+            <span key={tag}>
+              <Link href={`/tags/${tag}`}>{tag}</Link>
+            </span>
+          ))}
+        </div>
       </div>
       <Content />
     </article>
